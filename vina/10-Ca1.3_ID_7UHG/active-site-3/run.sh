@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-for f in ./ligands/ligand_*.pdbqt; do
+for f in ./ligands2/ligand_*.pdbqt; do
 	b=`basename $f .pdbqt`
 	echo Proccessing ligand $b
 	mkdir -p ./dist/$b
