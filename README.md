@@ -1,3 +1,3 @@
-> Docking orqali ligand molekulasini oqsilning faol markaziga joylashtirish natijalari.
+> Molekulyar docking orqali ligand molekulasini oqsilning faol markaziga joylashtirish natijalari.
 
 
