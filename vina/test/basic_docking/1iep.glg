@@ -1,0 +1,168 @@
+
+       _______________________________________________________
+
+__________//____________________________/////_________________/________
+_________/__/____________/_____________/______________/_______/________
+________/____/___________/_____________/______________________/________
+________/____/__/_____/_/////___/////__/__////_/_///__/__////_/________
+_______/______/_/_____/__/_____/_____/_/_____/_//___/_/_/____//________
+_______////////_/_____/__/_____/_____/_/_____/_/______/_/_____/________
+_______/______/_/____//__/___/_/_____/_/_____/_/______/_/____//________
+_______/______/__////_/___///___/////___/////__/______/__////_/________
+
+       _______________________________________________________
+
+                                ______
+                               /      \
+                              /        \
+                             /          \
+                             \    /\    /
+                              \  /  \  /
+                               \/ /\ \/
+                                 /  \
+                                /____\
+
+
+                ______________________________________ 
+               |                                      |
+               |            AutoGrid 4.2.7.x.2019-07-11         |
+               |                                      |
+               |        Garrett M. Morris, TSRI       |
+               |            Ruth Huey, TSRI           |
+               |        David S. Goodsell, TSRI       |
+               |         Arthur J. Olson, TSRI        |
+               |     (MODIFIED VERSION DUAL HB)       |
+               |                                      |
+               |        (C) 1989-2009, TSRI           |
+               |   The Scripps Research Institute     |
+               |______________________________________|
+
+                ______________________________________ 
+               |                                      |
+               | Calculation of van der Waals, H-Bond,|
+               |   Electrostatic Potential Energy, &  |
+               |   Desolvation Free Energy Grid Maps  |
+               |             for AutoDock             |
+               | For help, email autodock@scripps.edu |
+               |______________________________________|
+
+
+
+
+                           $Revision: 1.145 $
+Compilation parameters:  NUM_RECEPTOR_TYPES=20 NEINT=2048
+  AG_MAX_ATOMS=100000  MAX_MAPS=128 NDIEL=16384 MAX_ATOM_TYPES=126
+        e_vdW_Hb table has 32514048 entries of size 8
+Maximum number of maps that can be computed = 128 (defined by MAX_MAPS in "autocomm.h").
+  Non-bond cutoff for internal energy calculation (NBC): 8.00
+  Optimize internal energy scoring (USE_8A_NBCUTOFF):  yes
+  Faster search for nearby atoms (USE_BHTREE):  yes
+  Run calculations in parallel if possible (_OPENMP):  yes
+This file was created at:			1:40 37" p.m., 10/13/2023
+                   using:			"dev"
+
+
+GPF> receptor 1iep_receptor.pdbqt         # macromolecule
+
+Receptor Input File :	1iep_receptor.pdbqt
+
+Receptor Atom Type Assignments:
+
+
+Maximum partial atomic charge found = +0.665 e
+Minimum partial atomic charge found = -0.648 e
+
+Atom	Atom	Number of this Type
+Type	 ID 	 in Receptor
+____	____	___________________
+ 0	 N		   362
+ 1	 HD		   473
+ 2	 C		  1199
+ 3	 OA		   414
+ 4	 SA		    18
+ 5	 A		   236
+
+Total number of atoms :		2702 atoms 
+Total charge :			-7.91 e
+
+
+Receptor coordinates fit within the following volume:
+
+                   _______(38.6, 73.7, 53.9)
+                  /|     /|
+                 / |    / |
+                /______/  |
+                |  |___|__| Midpoint = (12.6, 52.2, 22.3)
+                |  /   |  /
+                | /    | /
+                |/_____|/
+(-13.3, 30.8, -9.3)      
+
+Maximum coordinates :		(38.556, 73.719, 53.882)
+Minimum coordinates :		(-13.346, 30.756, -9.277)
+
+
+GPF> gridfld 1iep_receptor.maps.fld       # grid_data_file
+
+Creating (AVS-readable) grid maps file : 1iep_receptor.maps.fld
+
+Creating (AVS-readable) grid-coordinates extrema file : 1iep_receptor.maps.xyz
+
+GPF> npts 40 45 40                        # num.grid points in xyz
+/home/xnitry/apps/adfr/ADFRsuite-1.0/bin/autogrid4: Number of grid elements must be even; y-elements changed to: 44
+
+Number of grid points in x-direction:	41
+Number of grid points in y-direction:	45
+Number of grid points in z-direction:	41
+
+GPF> spacing 0.375                        # spacing(A)
+Grid Spacing :			0.375 Angstrom
+
+GPF> gridcenter 15.19 53.9025 16.917      # xyz-coordinates or auto
+
+Grid maps will be centered on user-defined coordinates:
+
+		(15.190, 53.903, 16.917)
+
+Grid maps will cover the following volume:
+
+                   _______(22.7, 62.2, 24.4)
+                  /|     /|
+                 / |    / |
+                /______/  |
+                |  |___|__| Midpoint = (15.2, 53.9, 16.9)
+                |  /   |  /
+                | /    | /
+                |/_____|/
+(7.7, 45.7, 9.4)      
+
+Grid map x-dimension :		15.0 Angstroms
+Grid map y-dimension :		16.5 Angstroms
+Grid map z-dimension :		15.0 Angstroms
+
+Maximum coordinates :		(22.690, 62.153, 24.417)
+Minimum coordinates :		(7.690, 45.653, 9.417)
+
+GPF> types CAN                            # atom type names
+Allocated space for 4 gridmap objects
+4 CPU threads will be used for calculation
+
+Atom type names for ligand atom types 1-1 used for ligand-atom affinity grid maps:
+
+			Atom type number 0 corresponds to atom type name "CAN".
+
+
+GPF> smooth 0.5                           # store minimum energy w/in rad(A)
+
+Potentials will be smoothed by: 0.500 Angstrom
+
+GPF> map 1iep_receptor.C.map              # atom-specific affinity map
+
+Output Grid Map 1:   1iep_receptor.C.map
+
+GPF> nbp_r_eps  4.00 0.0222750 12  6   # C-C lj
+
+/home/xnitry/apps/adfr/ADFRsuite-1.0/bin/autogrid4: ERROR:  syntax error, not 6 values in NBP_R_EPS line
+
+
+/home/xnitry/apps/adfr/ADFRsuite-1.0/bin/autogrid4: Unsuccessful Completion.
