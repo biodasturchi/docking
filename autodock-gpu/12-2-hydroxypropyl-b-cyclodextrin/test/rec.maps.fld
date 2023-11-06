@@ -1,0 +1,62 @@
+# AVS field file
+#
+# AutoDock Atomic Affinity and Electrostatic Grids
+#
+# Created by autogrid4 4.2.7.x.2019-07-11.
+#
+#SPACING 0.375
+#NELEMENTS 66 66 66
+#CENTER -0.343 0.005 -0.022
+#MACROMOLECULE receptor.pdbqt
+#GRID_PARAMETER_FILE rec.gpf
+#
+ndim=3			# number of dimensions in the field
+dim1=67			# number of x-elements
+dim2=67			# number of y-elements
+dim3=67			# number of z-elements
+nspace=3		# number of physical coordinates per point
+veclen=17		# number of affinity values at each point
+data=float		# data type (byte, integer, float, double)
+field=uniform		# field type (uniform, rectilinear, irregular)
+coord 1 file=rec.maps.xyz filetype=ascii offset=0
+coord 2 file=rec.maps.xyz filetype=ascii offset=2
+coord 3 file=rec.maps.xyz filetype=ascii offset=4
+label=HD-affinity
+label=C-affinity
+label=A-affinity
+label=N-affinity
+label=NA-affinity
+label=OA-affinity
+label=F-affinity
+label=P-affinity
+label=SA-affinity
+label=S-affinity
+label=Cl-affinity
+label=Br-affinity
+label=I-affinity
+label=Si-affinity
+label=B-affinity
+label=OX-affinity
+label=Electrostatics
+label=Desolvation
+#
+# location of affinity grid files and how to read them
+#
+variable 1 file=rec.HD.map filetype=ascii skip=6
+variable 2 file=rec.C.map filetype=ascii skip=6
+variable 3 file=rec.A.map filetype=ascii skip=6
+variable 4 file=rec.N.map filetype=ascii skip=6
+variable 5 file=rec.NA.map filetype=ascii skip=6
+variable 6 file=rec.OA.map filetype=ascii skip=6
+variable 7 file=rec.F.map filetype=ascii skip=6
+variable 8 file=rec.P.map filetype=ascii skip=6
+variable 9 file=rec.SA.map filetype=ascii skip=6
+variable 10 file=rec.S.map filetype=ascii skip=6
+variable 11 file=rec.Cl.map filetype=ascii skip=6
+variable 12 file=rec.Br.map filetype=ascii skip=6
+variable 13 file=rec.I.map filetype=ascii skip=6
+variable 14 file=rec.Si.map filetype=ascii skip=6
+variable 15 file=rec.B.map filetype=ascii skip=6
+variable 16 file=rec.OX.map filetype=ascii skip=6
+variable 17 file=rec.e.map filetype=ascii skip=6
+variable 18 file=rec.d.map filetype=ascii skip=6

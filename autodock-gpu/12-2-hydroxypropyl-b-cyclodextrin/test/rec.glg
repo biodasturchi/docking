@@ -1,0 +1,531 @@
+
+       _______________________________________________________
+
+__________//____________________________/////_________________/________
+_________/__/____________/_____________/______________/_______/________
+________/____/___________/_____________/______________________/________
+________/____/__/_____/_/////___/////__/__////_/_///__/__////_/________
+_______/______/_/_____/__/_____/_____/_/_____/_//___/_/_/____//________
+_______////////_/_____/__/_____/_____/_/_____/_/______/_/_____/________
+_______/______/_/____//__/___/_/_____/_/_____/_/______/_/____//________
+_______/______/__////_/___///___/////___/////__/______/__////_/________
+
+       _______________________________________________________
+
+                                ______
+                               /      \
+                              /        \
+                             /          \
+                             \    /\    /
+                              \  /  \  /
+                               \/ /\ \/
+                                 /  \
+                                /____\
+
+
+                ______________________________________ 
+               |                                      |
+               |            AutoGrid 4.2.7.x.2019-07-11         |
+               |                                      |
+               |        Garrett M. Morris, TSRI       |
+               |            Ruth Huey, TSRI           |
+               |        David S. Goodsell, TSRI       |
+               |         Arthur J. Olson, TSRI        |
+               |     (MODIFIED VERSION DUAL HB)       |
+               |                                      |
+               |        (C) 1989-2009, TSRI           |
+               |   The Scripps Research Institute     |
+               |______________________________________|
+
+                ______________________________________ 
+               |                                      |
+               | Calculation of van der Waals, H-Bond,|
+               |   Electrostatic Potential Energy, &  |
+               |   Desolvation Free Energy Grid Maps  |
+               |             for AutoDock             |
+               | For help, email autodock@scripps.edu |
+               |______________________________________|
+
+
+
+
+                           $Revision: 1.145 $
+Compilation parameters:  NUM_RECEPTOR_TYPES=20 NEINT=2048
+  AG_MAX_ATOMS=100000  MAX_MAPS=128 NDIEL=16384 MAX_ATOM_TYPES=126
+        e_vdW_Hb table has 32514048 entries of size 8
+Maximum number of maps that can be computed = 128 (defined by MAX_MAPS in "autocomm.h").
+  Non-bond cutoff for internal energy calculation (NBC): 8.00
+  Optimize internal energy scoring (USE_8A_NBCUTOFF):  yes
+  Faster search for nearby atoms (USE_BHTREE):  yes
+  Run calculations in parallel if possible (_OPENMP):  yes
+This file was created at:			4:36 50" p.m., 10/27/2023
+                   using:			"dev"
+
+
+GPF> parameter_file boron_silicon_atompar.dat
+Using read_parameter_library() to try to open and read "boron_silicon_atompar.dat".
+
+GPF> npts 66 66 66
+
+Number of grid points in x-direction:	67
+Number of grid points in y-direction:	67
+Number of grid points in z-direction:	67
+
+GPF> gridfld rec.maps.fld
+
+Creating (AVS-readable) grid maps file : rec.maps.fld
+
+Creating (AVS-readable) grid-coordinates extrema file : rec.maps.xyz
+
+GPF> spacing 0.375
+Grid Spacing :			0.375 Angstrom
+
+GPF> receptor_types C HD OA
+GPF> ligand_types HD C A N NA OA F P SA S Cl Br I Si B
+Allocated space for 18 gridmap objects
+4 CPU threads will be used for calculation
+
+Atom type names for ligand atom types 1-15 used for ligand-atom affinity grid maps:
+
+			Atom type number 0 corresponds to atom type name "HD".
+			Atom type number 1 corresponds to atom type name "C".
+			Atom type number 2 corresponds to atom type name "A".
+			Atom type number 3 corresponds to atom type name "N".
+			Atom type number 4 corresponds to atom type name "NA".
+			Atom type number 5 corresponds to atom type name "OA".
+			Atom type number 6 corresponds to atom type name "F".
+			Atom type number 7 corresponds to atom type name "P".
+			Atom type number 8 corresponds to atom type name "SA".
+			Atom type number 9 corresponds to atom type name "S".
+			Atom type number 10 corresponds to atom type name "Cl".
+			Atom type number 11 corresponds to atom type name "Br".
+			Atom type number 12 corresponds to atom type name "I".
+			Atom type number 13 corresponds to atom type name "Si".
+			Atom type number 14 corresponds to atom type name "B".
+
+
+GPF> receptor receptor.pdbqt
+
+Receptor Input File :	receptor.pdbqt
+
+Receptor Atom Type Assignments:
+
+
+Maximum partial atomic charge found = +0.292 e
+Minimum partial atomic charge found = -0.394 e
+
+Atom	Atom	Number of this Type
+Type	 ID 	 in Receptor
+____	____	___________________
+ 0	 C		    63
+ 1	 HD		    21
+ 2	 OA		    42
+
+Total number of atoms :		126 atoms 
+Total charge :			0.01 e
+
+
+Receptor coordinates fit within the following volume:
+
+                   _______(10.1, 0.1, 4.5)
+                  /|     /|
+                 / |    / |
+                /______/  |
+                |  |___|__| Midpoint = (-0.0, -7.9, -3.2)
+                |  /   |  /
+                | /    | /
+                |/_____|/
+(-10.1, -16.0, -10.9)      
+
+Maximum coordinates :		(10.098, 0.066, 4.499)
+Minimum coordinates :		(-10.139, -15.953, -10.917)
+
+
+GPF> gridcenter -0.343 0.005 -0.022
+
+Grid maps will be centered on user-defined coordinates:
+
+		(-0.343, 0.005, -0.022)
+
+Grid maps will cover the following volume:
+
+                   _______(12.0, 12.4, 12.4)
+                  /|     /|
+                 / |    / |
+                /______/  |
+                |  |___|__| Midpoint = (-0.3, 0.0, -0.0)
+                |  /   |  /
+                | /    | /
+                |/_____|/
+(-12.7, -12.4, -12.4)      
+
+Grid map x-dimension :		24.8 Angstroms
+Grid map y-dimension :		24.8 Angstroms
+Grid map z-dimension :		24.8 Angstroms
+
+Maximum coordinates :		(12.032, 12.380, 12.353)
+Minimum coordinates :		(-12.718, -12.370, -12.397)
+
+GPF> smooth 0.5
+
+Potentials will be smoothed by: 0.500 Angstrom
+
+GPF> map         rec.HD.map
+
+Output Grid Map 1:   rec.HD.map
+
+GPF> map         rec.C.map
+
+Output Grid Map 2:   rec.C.map
+
+GPF> map         rec.A.map
+
+Output Grid Map 3:   rec.A.map
+
+GPF> map         rec.N.map
+
+Output Grid Map 4:   rec.N.map
+
+GPF> map         rec.NA.map
+
+Output Grid Map 5:   rec.NA.map
+
+GPF> map         rec.OA.map
+
+Output Grid Map 6:   rec.OA.map
+
+GPF> map         rec.F.map
+
+Output Grid Map 7:   rec.F.map
+
+GPF> map         rec.P.map
+
+Output Grid Map 8:   rec.P.map
+
+GPF> map         rec.SA.map
+
+Output Grid Map 9:   rec.SA.map
+
+GPF> map         rec.S.map
+
+Output Grid Map 10:   rec.S.map
+
+GPF> map         rec.Cl.map
+
+Output Grid Map 11:   rec.Cl.map
+
+GPF> map         rec.Br.map
+
+Output Grid Map 12:   rec.Br.map
+
+GPF> map         rec.I.map
+
+Output Grid Map 13:   rec.I.map
+
+GPF> map         rec.Si.map
+
+Output Grid Map 14:   rec.Si.map
+
+GPF> map         rec.B.map
+
+Output Grid Map 15:   rec.B.map
+
+GPF> elecmap     rec.e.map
+
+Output Electrostatic Potential Energy Grid Map: rec.e.map
+
+GPF> dsolvmap    rec.d.map
+
+Output Desolvation Free Energy Grid Map: rec.d.map
+
+GPF> dielectric -0.1465
+
+Using *distance-dependent* dielectric function of Mehler and Solmajer, Prot.Eng.4, 903-910.
+
+
+>>> Closing the grid parameter file (GPF)... <<<
+
+________________________________________________________________________________
+
+
+
+Calculating Pairwise Interaction Energies
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 1, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 2, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 3, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 4, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 5, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 6, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 7, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 8, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 9, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 10, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 11, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 12, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 13, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 14, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 15, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 16, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 17, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 18, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 19, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 20, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 21, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 22, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 23, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 24, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 25, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 26, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 27, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 28, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 29, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 30, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 31, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 32, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 33, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 34, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 35, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 36, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 37, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 38, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 39, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 40, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 41, atom_type 2
+
+
+
+autogrid4: WARNING:  Oxygen atom found with no bonded atoms, atom serial number 42, atom_type 2
+
+
+Beginning grid calculations.
+
+Calculating 17 grids over 300763 elements, around 126 receptor atoms.
+
+                    Percent   Estimated Time  Time/this plane
+XY-plane  Z-coord   Done      Remaining       Real, User, System
+            /Ang              /sec            /sec
+________  ________  ________  ______________  __________________________
+
+    -33    -12.397     1.5%            0.66s  Real= 0.01,  CPU= 0.04,  System= 0.00
+    -32    -12.022     3.0%            0.65s  Real= 0.01,  CPU= 0.06,  System= 0.00
+    -31    -11.647     4.5%            1.28s  Real= 0.02,  CPU= 0.07,  System= 0.00
+    -30    -11.272     6.0%            1.26s  Real= 0.02,  CPU= 0.09,  System= 0.00
+    -29    -10.897     7.5%            0.62s  Real= 0.01,  CPU= 0.06,  System= 0.00
+    -28    -10.522     9.0%            1.22s  Real= 0.02,  CPU= 0.07,  System= 0.00
+    -27    -10.147    10.4%            1.20s  Real= 0.02,  CPU= 0.05,  System= 0.00
+    -26     -9.772    11.9%            1.18s  Real= 0.02,  CPU= 0.08,  System= 0.00
+    -25     -9.397    13.4%            1.16s  Real= 0.02,  CPU= 0.09,  System= 0.00
+    -24     -9.022    14.9%            1.14s  Real= 0.02,  CPU= 0.06,  System= 0.00
+    -23     -8.647    16.4%            0.56s  Real= 0.01,  CPU= 0.06,  System= 0.00
+    -22     -8.272    17.9%            1.10s  Real= 0.02,  CPU= 0.08,  System= 0.00
+    -21     -7.897    19.4%            0.54s  Real= 0.01,  CPU= 0.06,  System= 0.00
+    -20     -7.522    20.9%            1.59s  Real= 0.03,  CPU= 0.09,  System= 0.00
+    -19     -7.147    22.4%            1.56s  Real= 0.03,  CPU= 0.09,  System= 0.00
+    -18     -6.772    23.9%            1.02s  Real= 0.02,  CPU= 0.09,  System= 0.00
+    -17     -6.397    25.4%            1.00s  Real= 0.02,  CPU= 0.09,  System= 0.00
+    -16     -6.022    26.9%            1.47s  Real= 0.03,  CPU= 0.11,  System= 0.00
+    -15     -5.647    28.4%            0.96s  Real= 0.02,  CPU= 0.10,  System= 0.00
+    -14     -5.272    29.9%            1.41s  Real= 0.03,  CPU= 0.12,  System= 0.00
+    -13     -4.897    31.3%            1.38s  Real= 0.03,  CPU= 0.12,  System= 0.00
+    -12     -4.522    32.8%            1.35s  Real= 0.03,  CPU= 0.11,  System= 0.00
+    -11     -4.147    34.3%            1.32s  Real= 0.03,  CPU= 0.11,  System= 0.00
+    -10     -3.772    35.8%            1.29s  Real= 0.03,  CPU= 0.11,  System= 0.00
+     -9     -3.397    37.3%            1.26s  Real= 0.03,  CPU= 0.11,  System= 0.00
+     -8     -3.022    38.8%            1.23s  Real= 0.03,  CPU= 0.12,  System= 0.00
+     -7     -2.647    40.3%            0.80s  Real= 0.02,  CPU= 0.10,  System= 0.00
+     -6     -2.272    41.8%            1.17s  Real= 0.03,  CPU= 0.12,  System= 0.00
+     -5     -1.897    43.3%            1.14s  Real= 0.03,  CPU= 0.12,  System= 0.00
+     -4     -1.522    44.8%            1.11s  Real= 0.03,  CPU= 0.11,  System= 0.00
+     -3     -1.147    46.3%            1.08s  Real= 0.03,  CPU= 0.12,  System= 0.00
+     -2     -0.772    47.8%            1.05s  Real= 0.03,  CPU= 0.11,  System= 0.00
+     -1     -0.397    49.3%            1.02s  Real= 0.03,  CPU= 0.11,  System= 0.00
+      0     -0.022    50.7%            0.99s  Real= 0.03,  CPU= 0.10,  System= 0.00
+      1      0.353    52.2%            1.28s  Real= 0.04,  CPU= 0.14,  System= 0.00
+      2      0.728    53.7%            0.62s  Real= 0.02,  CPU= 0.08,  System= 0.00
+      3      1.103    55.2%            0.60s  Real= 0.02,  CPU= 0.07,  System= 0.00
+      4      1.478    56.7%            0.87s  Real= 0.03,  CPU= 0.11,  System= 0.00
+      5      1.853    58.2%            0.56s  Real= 0.02,  CPU= 0.10,  System= 0.00
+      6      2.228    59.7%            0.54s  Real= 0.02,  CPU= 0.08,  System= 0.00
+      7      2.603    61.2%            0.26s  Real= 0.01,  CPU= 0.07,  System= 0.00
+      8      2.978    62.7%            0.50s  Real= 0.02,  CPU= 0.08,  System= 0.00
+      9      3.353    64.2%            0.72s  Real= 0.03,  CPU= 0.10,  System= 0.01
+     10      3.728    65.7%            0.69s  Real= 0.03,  CPU= 0.08,  System= 0.01
+     11      4.103    67.2%            0.66s  Real= 0.03,  CPU= 0.09,  System= 0.01
+     12      4.478    68.7%            0.42s  Real= 0.02,  CPU= 0.06,  System= 0.00
+     13      4.853    70.1%            0.40s  Real= 0.02,  CPU= 0.06,  System= 0.00
+     14      5.228    71.6%            0.57s  Real= 0.03,  CPU= 0.08,  System= 0.00
+     15      5.603    73.1%            0.18s  Real= 0.01,  CPU= 0.04,  System= 0.00
+     16      5.978    74.6%            0.17s  Real= 0.01,  CPU= 0.06,  System= 0.00
+     17      6.353    76.1%            0.48s  Real= 0.03,  CPU= 0.12,  System= 0.00
+     18      6.728    77.6%            0.00s  Real= 0.00,  CPU= 0.03,  System= 0.00
+     19      7.103    79.1%            0.14s  Real= 0.01,  CPU= 0.03,  System= 0.00
+     20      7.478    80.6%            0.26s  Real= 0.02,  CPU= 0.04,  System= 0.00
+     21      7.853    82.1%            0.12s  Real= 0.01,  CPU= 0.04,  System= 0.00
+     22      8.228    83.6%            0.22s  Real= 0.02,  CPU= 0.06,  System= 0.00
+     23      8.603    85.1%            0.20s  Real= 0.02,  CPU= 0.06,  System= 0.00
+     24      8.978    86.6%            0.09s  Real= 0.01,  CPU= 0.05,  System= 0.00
+     25      9.353    88.1%            0.08s  Real= 0.01,  CPU= 0.03,  System= 0.00
+     26      9.728    89.6%            0.07s  Real= 0.01,  CPU= 0.04,  System= 0.00
+     27     10.103    91.0%            0.06s  Real= 0.01,  CPU= 0.05,  System= 0.00
+     28     10.478    92.5%            0.05s  Real= 0.01,  CPU= 0.03,  System= 0.00
+     29     10.853    94.0%            0.04s  Real= 0.01,  CPU= 0.04,  System= 0.00
+     30     11.228    95.5%            0.03s  Real= 0.01,  CPU= 0.03,  System= 0.00
+     31     11.603    97.0%            0.02s  Real= 0.01,  CPU= 0.02,  System= 0.00
+     32     11.978    98.5%            0.01s  Real= 0.01,  CPU= 0.02,  System= 0.00
+     33     12.353   100.0%            0.00s  Real= 0.00,  CPU= 0.01,  System= 0.00
+
+autogrid4: WARNING:  At receptor H-bond acceptor, oxygen:
+Attempt to divide by zero was just prevented.
+
+
+
+
+Grid	Atom	Minimum   	Maximum
+Map 	Type	Energy    	Energy 
+		(kcal/mol)	(kcal/mol)
+____	____	_____________	_____________
+ 1	 HD	   -0.61	 1.04e+05
+ 2	 C	   -0.80	 2.01e+05
+ 3	 A	   -0.72	 2.01e+05
+ 4	 N	   -0.77	 2.00e+05
+ 5	 NA	   -0.77	 2.00e+05
+ 6	 OA	   -0.90	 2.00e+05
+ 7	 F	   -0.49	 2.00e+05
+ 8	 P	   -0.94	 2.02e+05
+ 9	 SA	   -0.98	 2.03e+05
+ 10	 S	   -0.99	 2.01e+05
+ 11	 Cl	   -1.10	 2.01e+05
+ 12	 Br	   -1.40	 2.04e+05
+ 13	 I	   -1.90	 2.12e+05
+ 14	 Si	   -0.95	 2.01e+05
+ 15	 B	   -0.79	 2.00e+05
+ 16	 e	   -2.28	 2.06e+00	Electrostatic Potential
+ 17	 d	    0.00	 9.76e-01	Desolvation Potential
+
+
+ * Note:  Every pairwise-atomic interaction was clamped at 100000.00
+
+
+autogrid4: Successful Completion.
+Real= 0.82s,  CPU= 2.69s,  System= 0.05s
