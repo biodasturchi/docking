@@ -1,0 +1,36 @@
+# AVS field file
+#
+# AutoDock Atomic Affinity and Electrostatic Grids
+#
+# Created by autogrid4.
+#
+#SPACING 0.375
+#NELEMENTS 50 50 50
+#CENTER 204.598 141.665 132.945
+#MACROMOLECULE receptor-troponin_6klt.pdbqt
+#GRID_PARAMETER_FILE D:/documents/github/bio/docking/autodock/10-for-anna/05-Troponin/quercetin/g.gpf
+#
+ndim=3			# number of dimensions in the field
+dim1=51			# number of x-elements
+dim2=51			# number of y-elements
+dim3=51			# number of z-elements
+nspace=3		# number of physical coordinates per point
+veclen=5		# number of affinity values at each point
+data=float		# data type (byte, integer, float, double)
+field=uniform		# field type (uniform, rectilinear, irregular)
+coord 1 file=receptor-troponin_6klt.maps.xyz filetype=ascii offset=0
+coord 2 file=receptor-troponin_6klt.maps.xyz filetype=ascii offset=2
+coord 3 file=receptor-troponin_6klt.maps.xyz filetype=ascii offset=4
+label=A-affinity	# component label for variable 1
+label=HD-affinity	# component label for variable 2
+label=OA-affinity	# component label for variable 3
+label=Electrostatics	# component label for variable 3
+label=Desolvation	# component label for variable 4
+#
+# location of affinity grid files and how to read them
+#
+variable 1 file=receptor-troponin_6klt.A.map filetype=ascii skip=6
+variable 2 file=receptor-troponin_6klt.HD.map filetype=ascii skip=6
+variable 3 file=receptor-troponin_6klt.OA.map filetype=ascii skip=6
+variable 4 file=receptor-troponin_6klt.e.map filetype=ascii skip=6
+variable 5 file=receptor-troponin_6klt.d.map filetype=ascii skip=6
